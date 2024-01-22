@@ -1,0 +1,20 @@
+digraph code {
+rankdir=LR;
+outputorder=edgesfirst;
+graph [bgcolor=azure fontname="Courier" splines="curved"];
+node [penwidth=4 fillcolor=white style=filled fontname="Courier Bold" fontsize=14 shape=box];
+edge [arrowhead="normal" style=bold weight=2];
+  "0x00010430" [label="entry0" URL="entry0/0x00010430"];
+  "0x00010430" -> "0x00010468" [color="#61afef" URL="entry.preinit0/0x00010468"];
+  "0x00010468" [label="entry.preinit0" URL="entry.preinit0/0x00010468"];
+  "0x00010430" -> "0x00010400" [color="#61afef" URL="sym.imp.__libc_start_main/0x00010400"];
+  "0x00010400" [label="sym.imp.__libc_start_main" URL="sym.imp.__libc_start_main/0x00010400"];
+  "0x000104e0" [label="sym.__do_global_dtors_aux" URL="sym.__do_global_dtors_aux/0x000104e0"];
+  "0x000104e0" -> "0x00010474" [color="#61afef" URL="sym.deregister_tm_clones/0x00010474"];
+  "0x00010474" [label="sym.deregister_tm_clones" URL="sym.deregister_tm_clones/0x00010474"];
+  "0x00010514" [label="main" URL="main/0x00010514"];
+  "0x00010514" -> "0x00010420" [color="#61afef" URL="sym.imp.printf/0x00010420"];
+  "0x00010420" [label="sym.imp.printf" URL="sym.imp.printf/0x00010420"];
+  "0x00010514" -> "0x00010410" [color="#61afef" URL="sym.imp.puts/0x00010410"];
+  "0x00010410" [label="sym.imp.puts" URL="sym.imp.puts/0x00010410"];
+}
