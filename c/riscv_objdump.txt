@@ -1,0 +1,196 @@
+
+main_riscv:     file format elf64-littleriscv
+
+
+Disassembly of section .plt:
+
+00000000000103e0 <_PROCEDURE_LINKAGE_TABLE_>:
+.#..3..A......C.
+.....S......g...
+
+0000000000010400 <__libc_start_main@plt>:
+auipc	t3,0x2
+ld	t3,-1008(t3) # 12010 <__libc_start_main@GLIBC_2.27>
+jalr	t1,t3
+nop
+
+0000000000010410 <puts@plt>:
+auipc	t3,0x2
+ld	t3,-1016(t3) # 12018 <puts@GLIBC_2.27>
+jalr	t1,t3
+nop
+
+0000000000010420 <printf@plt>:
+auipc	t3,0x2
+ld	t3,-1024(t3) # 12020 <printf@GLIBC_2.27>
+jalr	t1,t3
+nop
+
+Disassembly of section .text:
+
+0000000000010430 <_start>:
+jal	ra,10468 <_start+0x38>
+mv	a5,a0
+auipc	a0,0x0
+addi	a0,a0,220 # 10514 <main>
+ld	a1,0(sp)
+addi	a2,sp,8
+andi	sp,sp,-16
+auipc	a3,0x0
+addi	a3,a3,428 # 105f8 <__libc_csu_init>
+auipc	a4,0x0
+addi	a4,a4,564 # 10688 <__libc_csu_fini>
+mv	a6,sp
+jal	ra,10400 <__libc_start_main@plt>
+ebreak
+auipc	gp,0x2
+addi	gp,gp,920 # 12800 <__global_pointer$>
+ret
+
+0000000000010474 <deregister_tm_clones>:
+lui	a0,0x12
+lui	a4,0x12
+mv	a5,a0
+mv	a4,a4
+beq	a4,a5,1049c <deregister_tm_clones+0x28>
+lui	t1,0x0
+mv	t1,t1
+beqz	t1,1049c <deregister_tm_clones+0x28>
+mv	a0,a0
+jr	t1 # 0 <_PROCEDURE_LINKAGE_TABLE_-0x103e0>
+ret
+
+00000000000104a0 <register_tm_clones>:
+lui	a0,0x12
+mv	a1,a0
+lui	a5,0x12
+mv	a5,a5
+sub	a5,a5,a1
+srai	a4,a5,0x3
+srli	a1,a5,0x3f
+add	a1,a1,a4
+srai	a1,a1,0x1
+beqz	a1,104dc <register_tm_clones+0x3c>
+lui	t1,0x0
+mv	t1,t1
+beqz	t1,104dc <register_tm_clones+0x3c>
+mv	a0,a0
+jr	t1 # 0 <_PROCEDURE_LINKAGE_TABLE_-0x103e0>
+ret
+
+00000000000104e0 <__do_global_dtors_aux>:
+addi	sp,sp,-16
+sd	s0,0(sp)
+lbu	a5,-1984(gp) # 12040 <_edata>
+sd	ra,8(sp)
+bnez	a5,10500 <__do_global_dtors_aux+0x20>
+jal	ra,10474 <deregister_tm_clones>
+li	a5,1
+sb	a5,-1984(gp) # 12040 <_edata>
+ld	ra,8(sp)
+ld	s0,0(sp)
+addi	sp,sp,16
+ret
+
+0000000000010510 <frame_dummy>:
+j	104a0 <register_tm_clones>
+
+0000000000010514 <main>:
+addi	sp,sp,-32
+sd	ra,24(sp)
+sd	s0,16(sp)
+addi	s0,sp,32
+li	a5,3
+sw	a5,-28(s0)
+lw	a5,-28(s0)
+sext.w	a5,a5
+blez	a5,10574 <main+0x60>
+lw	a5,-28(s0)
+sw	a5,-20(s0)
+j	10564 <main+0x50>
+lw	a5,-28(s0)
+mv	a1,a5
+lui	a5,0x10
+addi	a0,a5,1680 # 10690 <__libc_csu_fini+0x8>
+jal	ra,10420 <printf@plt>
+lw	a5,-20(s0)
+addiw	a5,a5,-1
+sw	a5,-20(s0)
+lw	a5,-20(s0)
+sext.w	a5,a5
+bgtz	a5,10544 <main+0x30>
+j	105d4 <main+0xc0>
+lw	a5,-28(s0)
+sext.w	a5,a5
+bnez	a5,10598 <main+0x84>
+lw	a5,-28(s0)
+mv	a1,a5
+lui	a5,0x10
+addi	a0,a5,1688 # 10698 <__libc_csu_fini+0x10>
+jal	ra,10420 <printf@plt>
+j	105d4 <main+0xc0>
+lw	a5,-28(s0)
+negw	a5,a5
+sw	a5,-24(s0)
+j	105c8 <main+0xb4>
+lw	a5,-28(s0)
+mv	a1,a5
+lui	a5,0x10
+addi	a0,a5,1680 # 10690 <__libc_csu_fini+0x8>
+jal	ra,10420 <printf@plt>
+lw	a5,-24(s0)
+addiw	a5,a5,-1
+sw	a5,-24(s0)
+lw	a5,-24(s0)
+sext.w	a5,a5
+bgtz	a5,105a8 <main+0x94>
+lui	a5,0x10
+addi	a0,a5,1704 # 106a8 <__libc_csu_fini+0x20>
+jal	ra,10410 <puts@plt>
+li	a5,0
+mv	a0,a5
+ld	ra,24(sp)
+ld	s0,16(sp)
+addi	sp,sp,32
+ret
+
+00000000000105f8 <__libc_csu_init>:
+addi	sp,sp,-64
+sd	s0,48(sp)
+sd	s2,32(sp)
+auipc	s0,0x2
+addi	s0,s0,-2036 # 11e10 <__frame_dummy_init_array_entry>
+auipc	s2,0x2
+addi	s2,s2,-2036 # 11e18 <__init_array_end>
+sub	s2,s2,s0
+sd	ra,56(sp)
+sd	s1,40(sp)
+sd	s3,24(sp)
+sd	s4,16(sp)
+sd	s5,8(sp)
+srai	s2,s2,0x3
+beqz	s2,10664 <__libc_csu_init+0x6c>
+mv	s3,a0
+mv	s4,a1
+mv	s5,a2
+li	s1,0
+ld	a5,0(s0)
+mv	a2,s5
+mv	a1,s4
+mv	a0,s3
+addi	s1,s1,1
+jalr	a5
+addi	s0,s0,8
+bne	s2,s1,10644 <__libc_csu_init+0x4c>
+ld	ra,56(sp)
+ld	s0,48(sp)
+ld	s1,40(sp)
+ld	s2,32(sp)
+ld	s3,24(sp)
+ld	s4,16(sp)
+ld	s5,8(sp)
+addi	sp,sp,64
+ret
+
+0000000000010688 <__libc_csu_fini>:
+ret

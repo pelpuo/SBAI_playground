@@ -13,6 +13,7 @@
 	.string	"\nComplete"
 	.text
 	.align	2
+	
 	.globl	main
 	.type	main, @function
 main:

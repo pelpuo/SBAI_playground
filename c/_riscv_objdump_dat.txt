@@ -1,0 +1,7 @@
+
+main_riscv:     file format elf64-littleriscv
+
+Contents of section .rodata:
+ 10690 25640000 00000000 656c656d 20697325  %d......elem is%
+ 106a0 640a0000 00000000 0a436f6d 706c6574  d........Complet
+ 106b0 6500                                 e.              
